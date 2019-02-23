@@ -2,10 +2,24 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default class App extends React.Component {
+  createElementsFromList(list) {
+    elements = list.map(item => {
+      return(<Text>{item}</Text>)
+      
+    });
+    return (elements);
+  }
+
   render() {
+
+    const groceryList = [
+      'banana',
+      'apple',
+      'coconut'
+    ];
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+        {this.createElementsFromList(groceryList)}
       </View>
     );
   }
