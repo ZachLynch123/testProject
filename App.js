@@ -1,29 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import HomeScreen from './screens/HomeScreen'
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-export default class App extends React.Component {
-  createElementsFromList(list) {
-    elements = list.map(item => {
-      return(<Text>{item}</Text>)
-      
-    });
-    return (elements);
-  }
 
-  render() {
+const MainNavigator = createStackNavigator({
+  Home: {screen: HomeScreen},
+});
 
-    const groceryList = [
-      'banana',
-      'apple',
-      'coconut'
-    ];
-    return (
-      <View style={styles.container}>
-        {this.createElementsFromList(groceryList)}
-      </View>
-    );
-  }
-}
+const App = createAppContainer(MainNavigator);
+
+export default App
 
 const styles = StyleSheet.create({
   container: {
