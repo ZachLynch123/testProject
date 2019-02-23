@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TextInput } from 'react-native';
 
 
 class Sourdough extends React.Component {
@@ -7,6 +7,7 @@ class Sourdough extends React.Component {
         super(props);
         this.state = {
         flour: 500,
+        wheat: 0,
         water: 0,
         salt: 0,
         starter: 0,
@@ -31,11 +32,10 @@ class Sourdough extends React.Component {
 
     getSalt = (flour) => {
         let temp = 2 * flour;
-        return temp / 100;
+        return this.state.salt;
     }
 
 
-    // comment
 
     render() {
         const { navigation } = this.props;
@@ -43,7 +43,14 @@ class Sourdough extends React.Component {
         const name = navigation.getParam('name', 'problem getting name');
         return(
             <View style={styles.container}>
-                <Text>For this Sourdough loaf you will need a 70% hydration dough. For one loaf you will need {flour}g of flour, {this.getWheatFlour(flour)}g wheat flour {this.getWater(flour)}g water, {this.getStarter(flour)}g starter, and {this.getSalt(flour)}g salt </Text>
+            <TextInput style={{height: 40}}
+                placeholder={flour.toString()}
+                onChangeText={number => 
+                    this.setState({flour: number})
+            
+        }
+            />
+                <Text>For this Sourdough loaf you will need a 70% hydration dough. For one loaf you will need {this.state.flour}g of flour, {this.getWheatFlour(this.state.flour)}g wheat flour {this.getWater(flour)}g water, {this.getStarter(flour)}g starter, and {this.getSalt(flour)}g salt </Text>
             </View>
         )
     }
