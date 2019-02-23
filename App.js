@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import HomeScreen from './screens/HomeScreen'
-import Hydration70 from './screens/Hydration70'
+import Sourdough from './screens/Sourdough'
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 
 const MainNavigator = createStackNavigator({
   Home: {screen: HomeScreen},
-  Hydration70: {screen: Hydration70}
+  Sourdough: {screen: Sourdough}
 });
 
 const App = createAppContainer(MainNavigator);
